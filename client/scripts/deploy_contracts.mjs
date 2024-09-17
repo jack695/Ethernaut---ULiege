@@ -18,7 +18,7 @@ let proxyAdmin;
 let implementation;
 let proxyStats;
 
-const PROMPT_ON_DEVELOP = true;
+const PROMPT_ON_DEVELOP = false;
 const DEPLOY_DATA_PATH = `./client/src/gamedata/deploy.${constants.ACTIVE_NETWORK.name}.json`;
 
 async function exec() {
