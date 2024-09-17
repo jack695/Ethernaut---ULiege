@@ -1,0 +1,27 @@
+services:
+  blockchain:
+    build:
+      context: .
+    command: network
+    network_mode: host
+  init-blockchain:
+    build:
+      context: .
+    entrypoint: sh -c "sleep 10 && yarn deploy:contracts && sleep 10"
+    depends_on:
+      blockchain:
+        condition: service_started
+    network_mode: host
+    restart: on-failure
+    volumes:
+      - ./client/src/gamedata:/ethernaut/client/src/gamedata
+  website:
+    build:
+      context: .
+    command: start:ethernaut
+    depends_on:
+      init-blockchain:
+        condition: service_completed_successfully
+    network_mode: host
+    volumes:
+      - ./client/src/gamedata:/ethernaut/client/src/gamedata

@@ -15,13 +15,14 @@ ENV PATH=${PATH}:/root/.foundry/bin
 RUN foundryup
 # Install node, npm and n
 RUN apt install -y nodejs npm
-RUN npm install --global yarn
+RUN npm install -g yarn
 RUN npm install -g n
 
 WORKDIR /ethernaut
 COPY . .
 
-# Do not reproduce this for a real production server.
-ENV NODE_OPTIONS=--openssl-legacy-provider
+RUN n 16.20.1
+RUN yarn install
+RUN yarn compile:contracts
 
 ENTRYPOINT ["yarn"]
