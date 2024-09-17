@@ -1,5 +1,5 @@
 # Ethernaut
- 
+
 [![Twitter Follow](https://img.shields.io/twitter/follow/OpenZeppelin?style=plastic&logo=twitter)](https://twitter.com/OpenZeppelin)
 [![OpenZeppelin Forum](https://img.shields.io/badge/Ethernaut%20Forum%20-discuss-blue?style=plastic&logo=discourse)](https://forum.openzeppelin.com/tag/ethernaut)
 
@@ -43,14 +43,13 @@ In order to install, build, and run Ethernaut locally, follow these instructions
     yarn compile:contracts
     ```
 
-5. Set `client/src/constants.js` `ACTIVE_NETWORK` to `NETWORKS.LOCAL`
-6. Deploy contracts
+5. Deploy contracts
 
     ```bash
     yarn deploy:contracts
     ```
 
-7. Start Ethernaut locally
+6. Start Ethernaut locally
 
     ```bash
     yarn start:ethernaut
