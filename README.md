@@ -1,17 +1,10 @@
 # Ethernaut
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/OpenZeppelin?style=plastic&logo=twitter)](https://twitter.com/OpenZeppelin)
-[![OpenZeppelin Forum](https://img.shields.io/badge/Ethernaut%20Forum%20-discuss-blue?style=plastic&logo=discourse)](https://forum.openzeppelin.com/tag/ethernaut)
-
 Ethernaut is a Web3/Solidity based wargame inspired by [overthewire](https://overthewire.org), to be played in the Ethereum Virtual Machine. Each level is a smart contract that needs to be 'hacked'.
 
 The game acts both as a tool for those interested in learning ethereum, and as a way to catalogue historical hacks as levels. There can be an infinite number of levels and the game does not require to be played in any particular order.
 
-## Deployed Versions
-
-You can find the current, official version at: [ethernaut.openzeppelin.com](https://ethernaut.openzeppelin.com)
-
-## Install and Build
+## Hosting the game locally
 
 There are three components to Ethernaut that are needed to run/deploy in order to work with it locally:
 
@@ -21,12 +14,33 @@ There are three components to Ethernaut that are needed to run/deploy in order t
 
 In order to install, build, and run Ethernaut locally, follow these instructions:
 
+First clone this repository and its submodules with
+
+```
+git clone --recurse-submodules git@gitlab.uliege.be:blockchains/ethereum/ctf-games/ethernaut/ctf.git
+```
+
+or
+
+```
+git clone git@gitlab.uliege.be:blockchains/ethereum/ctf-games/ethernaut/ctf.git
+git submodule update --init --recursive
+```
+
+### Option 1: With Docker Compose
+To host the Ethernaut game locally (i.e. the local blockchain and the website), please run:
+```
+docker compose up
+```
+
+### Option 2: From source
+In case the previous option didn't work, you can refer to this section to host the game on your machine.
+
 0. Be sure to use a compatible Node version. If you use `nvm` you can run `nvm use` at the root level to be sure to select a compatible version.
 
-1. Clone the repo and install dependencies:
+1. Install dependencies:
 
     ```bash
-    git clone git@github.com:OpenZeppelin/ethernaut.git
     yarn install
     ```
 
@@ -55,44 +69,18 @@ In order to install, build, and run Ethernaut locally, follow these instructions
     yarn start:ethernaut
     ```
 
-### Running locally (sepolia network)
+## Play
 
-The same as using the local network but steps 2, 3 and 6 are not necessary.
+To start with this game, look at the instructions at [http://localhost:3000/help](http://localhost:3000/help).
 
-In this case, replace point 5 with:
-5. Set `client/src/constants.js` `ACTIVE_NETWORK` to `NETWORKS.SEPOLIA`
+Then, you can start with the first level at [http://localhost:3000/](http://localhost:3000/).
 
-### Running tests
+### Cheat Sheet
 
-```bash
-yarn test:contracts
-```
+A bunch of commands to help the folks which are unfamiliar with JavaScript.
 
-### Building
-
-```bash
-yarn build:ethernaut
-```
-
-### Deploying
-
-You will normally need to deploy it on a local network, for this you can just run `yarn deploy:contracts` and all the contracts will be deployed on your local node running on `localhost:8545` and you will be able to check each level address in the `deploy.local.json` file.
-
-To deploy the contracts on Sepolia, first set the `ACTIVE_NETWORK` variable in `constants.js` and then edit `deploy.sepolia.json`. This file keeps a history of all level and contract instances. To deploy a new instance, add an "x" entry to the array, like so:
-
-```json
-{
-  "0": "x",
-  "1": "0x4b1d5eb6cd2849c7890bcacd63a6855d1c0e79d5",
-  "2": "0xdf51a9e8ce57e7787e4a27dd19880fd7106b9a5c",
-  ...
-},
-```
-
-Then run `yarn deploy:contracts`.
-
-## Contributing
-
-Contributions and corrections are always welcome!
-
-Please follow the [Contributor's Guide](./CONTRIBUTING.md) if you would like to help out.
+| Command                              | Details |
+|----------------------------------------------------------------------------|------------------------------------------------------------------------------------|
+|  (await contract.someProperty()).toNumber() | Fetches the property "someProperty" (int) stored within a contract. Then, it converts to a number as it's initial type is a BigNumber (i.e. an object). |
+| await contract.f({value: toWei("0.0001")})                                 | Call the function 'f' of the contract and send 0.0001 ether along the transaction. |
+| await sendTransaction({from: player, to: contract.address, value: toWei("0.1")}) | Send a transaction from the player address to the contract with 0.1 ether.         |
