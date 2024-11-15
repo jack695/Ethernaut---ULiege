@@ -232,15 +232,6 @@ class Header extends React.Component {
 
     const LANGUAGES_MAP = {
       en: strings.english,
-      es: strings.spanish,
-      pt_br: strings.portuguese,
-      ja: strings.japanese,
-      zh_cn: strings.chinese_simplified,
-      zh_tw: strings.chinese_traditional,
-      fr: strings.french,
-      ru: strings.russian,
-      ar: strings.arabic,
-      tr: strings.turkish,
     };
 
     const ddOpen = Boolean(this.state.multiDDOpen);
