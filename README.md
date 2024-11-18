@@ -84,3 +84,21 @@ A bunch of commands to help the folks which are unfamiliar with JavaScript.
 |  (await contract.someProperty()).toNumber() | Fetches the property "someProperty" (int) stored within a contract. Then, it converts to a number as it's initial type is a BigNumber (i.e. an object). |
 | await contract.f({value: toWei("0.0001")})                                 | Call the function 'f' of the contract and send 0.0001 ether along the transaction. |
 | await sendTransaction({from: player, to: contract.address, value: toWei("0.1")}) | Send a transaction from the player address to the contract with 0.1 ether.         |
+
+## Troubleshooting
+### Issue: Transactions Failing After Lab Restart
+Your local blockchain’s state is not permanently saved to disk. This means that each time you restart the lab (specifically, the Docker container running the blockchain), the blockchain is reset.
+
+However, MetaMask keeps a record of your previous activity on the local blockchain, and it does not automatically clear this history. This causes MetaMask to be out-of-sync with the blockchain, which prevents you from publishing new transactions.
+
+**Solution**:
+
+- Clear the activity tab data:
+    - Open the MetaMask extension.
+    - Click on the three dots in the upper right corner.
+    - Go to "Settings," then select "Advanced Settings."
+    - Click on "Clear activity tab data."
+- Disconnect MetaMask from localhost:3000 and reconnect:
+    - Open the MetaMask extension.
+    - Click on the circle icon next to the three dots.
+    - Click on "Disconnect" and then reconnect.
