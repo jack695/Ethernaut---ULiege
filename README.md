@@ -16,15 +16,17 @@ In order to install, build, and run Ethernaut locally, follow these instructions
 
 First clone this repository and its submodules with
 
-```
+#### Linux/MacOS
+
+```bash
 git clone --recurse-submodules https://gitlab.uliege.be/blockchains/ethereum/ctf-games/ethernaut/ethernaut.git
 ```
 
-or
 
-```
-git clone https://gitlab.uliege.be/blockchains/ethereum/ctf-games/ethernaut/ethernaut.git
-git submodule update --init --recursive
+#### Windows
+
+```bash
+git clone -b vj-docker-compose-support-for-windows --recurse-submodules https://gitlab.uliege.be/blockchains/ethereum/ctf-games/ethernaut/ethernaut.git
 ```
 
 ### Option 1: With Docker Compose
