@@ -3,7 +3,10 @@ services:
     build:
       context: .
     command: network
-    network_mode: host
+    networks: 
+      - app_network
+    ports:
+      - "8545:8545"
   init-blockchain:
     build:
       context: .
@@ -11,7 +14,8 @@ services:
     depends_on:
       blockchain:
         condition: service_started
-    network_mode: host
+    networks: 
+      - app_network
     restart: on-failure
     volumes:
       - ./client/src/gamedata:/ethernaut/client/src/gamedata
@@ -22,6 +26,13 @@ services:
     depends_on:
       init-blockchain:
         condition: service_completed_successfully
-    network_mode: host
+    networks: 
+      - app_network
+    ports:
+      - "3000:3000"
     volumes:
       - ./client/src/gamedata:/ethernaut/client/src/gamedata
+
+networks:
+  app_network:
+    driver: bridge

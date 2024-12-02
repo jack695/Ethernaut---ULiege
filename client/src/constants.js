@@ -13,7 +13,7 @@ export const NETWORKS = {
   LOCAL: {
     name: "local",
     id: "31337",
-    url: "http://localhost",
+    url: "http://blockchain",
     port: 8545,
   },
   SEPOLIA: {
