@@ -26,6 +26,7 @@ WORKDIR /ethernaut
 COPY . .
 
 RUN n 16.20.1
+RUN cp -r ./contracts ./client/src 
 RUN yarn install
 RUN yarn compile:contracts
 
