@@ -50,20 +50,19 @@ In case the previous option didn't work, you can refer to this section to host t
     yarn network
     ```
 
-3. Import one of the private keys from the ganache-cli output to your Metamask wallet.
-4. Compile contracts
+3. Compile contracts
 
     ```bash
     yarn compile:contracts
     ```
 
-5. Deploy contracts
+4. Deploy contracts
 
     ```bash
     yarn deploy:contracts
     ```
 
-6. Start Ethernaut locally
+5. Start Ethernaut locally
 
     ```bash
     yarn start:ethernaut
