@@ -17,13 +17,13 @@ In order to install, build, and run Ethernaut locally, follow these instructions
 First clone this repository and its submodules with
 
 ```
-git clone --recurse-submodules git@gitlab.uliege.be:blockchains/ethereum/ctf-games/ethernaut/ctf.git
+git clone --recurse-submodules https://gitlab.uliege.be/blockchains/ethereum/ctf-games/ethernaut/ethernaut.git
 ```
 
 or
 
 ```
-git clone git@gitlab.uliege.be:blockchains/ethereum/ctf-games/ethernaut/ctf.git
+git clone https://gitlab.uliege.be/blockchains/ethereum/ctf-games/ethernaut/ethernaut.git
 git submodule update --init --recursive
 ```
 
