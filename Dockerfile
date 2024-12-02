@@ -2,10 +2,14 @@ FROM ubuntu
 
 RUN apt update
 # Install GIT
-RUN apt install -y bash git curl
+RUN apt install -y bash git curl python3.12-venv
 # Install Python. The first step is used to prevent prompt about timezones.
 RUN ln -snf /usr/share/zoneinfo/$CONTAINER_TIMEZONE /etc/localtime && echo $CONTAINER_TIMEZONE > /etc/timezone
-RUN echo "1 1" | apt install -y python3
+RUN echo "1 1" | apt install -y python3 pip
+# Create a virtual environment and activate it
+RUN python3 -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+RUN pip install setuptools
 # Install GCC and Make
 RUN apt install -y build-essential
 # Install foundry
