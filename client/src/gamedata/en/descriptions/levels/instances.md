@@ -8,7 +8,7 @@ Set up the extension's wallet and use the network selector to point to the prefe
 #### 2. Open the browser's console
 Open your browser's console: `Tools > Developer Tools`.
 
-You should see a few messages from the game. One of them should state your player's address. This will be important during the game! You can always see your player address by entering the following command: 
+You should see a few messages from the game. One of them should state your player's address. This will be important during the game! You can always see your player address by entering the following command:
 
 `player`
 
@@ -46,20 +46,15 @@ Among other things, the contract's ABI exposes all of `Ethernaut.sol`'s public m
 
 You can see who the owner of the ethernaut contract is.
 
-#### 6. Get test ether
-To play the game, you will need test ether. The easiest way to get some testnet ether is via a valid faucet for your chosen network.
-
-Once you see some coins in your balance, move on to the next step.
-
-#### 7. Getting a level instance
+#### 6. Getting a level instance
 When playing a level, you don't interact directly with the ethernaut contract. Instead, you ask it to generate a **level instance** for you. To do so, click the "Get New Instance" button at the bottom of the page. Go do it now and come back!
 
 You should be prompted by MetaMask to authorize the transaction. Do so, and you should see some messages in the console. Note that this is deploying a new contract in the blockchain and might take a few seconds, so please be patient when requesting new level instances!
 
-#### 8. Inspecting the contract
+#### 7. Inspecting the contract
 Just as you did with the ethernaut contract, you can inspect this contract's ABI through the console using the `contract` variable.
 
-#### 9. Interact with the contract to complete the level
+#### 8. Interact with the contract to complete the level
 Look into the level's info method `contract.info()` or `await contract.info()` if you're using Chrome v62.
 You should have all you need to complete the level within the contract.
 When you know you have completed the level, submit the contract using the submit button at the bottom of the page.
