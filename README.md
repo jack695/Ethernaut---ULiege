@@ -35,6 +35,12 @@ To host the Ethernaut game locally (i.e. the local blockchain and the website), 
 docker compose up
 ```
 
+Building up the Docker image for the first time can take up to 5 minutes.
+Shortly after the image is built, three containers should start running.
+
+
+![d](pictures/deployment_done.png)
+
 ### Option 2: From source
 In case the previous option didn't work, you can refer to this section to host the game on your machine.
 
