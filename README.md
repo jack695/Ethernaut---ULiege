@@ -84,7 +84,8 @@ A bunch of commands to help the folks which are unfamiliar with JavaScript.
 |----------------------------------------------------------------------------|------------------------------------------------------------------------------------|
 |  (await contract.someProperty()).toNumber() | Fetches the property "someProperty" (int) stored within a contract. Then, it converts to a number as it's initial type is a BigNumber (i.e. an object). |
 | await contract.f({value: toWei("0.0001")})                                 | Call the function 'f' of the contract and send 0.0001 ether along the transaction. |
-| await sendTransaction({from: player, to: contract.address, value: toWei("0.1")}) | Send a transaction from the player address to the contract with 0.1 ether.         |
+| await sendTransaction({from: player, to: contract.address, value: toWei("0.1"), gas: 100000}) | Send a transaction from the player address to the contract with 0.1 ether and a gas limit of 100000.         |
+| web3.eth.abi.encodeFunctionSignature("someFunction")| Compute the function selector of 'someFunction'         |
 
 ## Troubleshooting
 ### Issue: Transactions Failing After Lab Restart
