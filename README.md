@@ -94,6 +94,20 @@ A bunch of commands to help the folks which are unfamiliar with JavaScript.
 | web3.eth.abi.encodeFunctionSignature("someFunction")| Compute the function selector of 'someFunction'         |
 
 ## Troubleshooting
+### Issue: Contracts Deployment Failing
+
+A participant noticed that their deployment was stuck because the smart contracts failed to deploy correctly. Below is the error reported to us:
+
+```bash
+init-blockchain-1  | Error: Returned error: replacement transaction underpriced -- Reason given: Custom error (could not decode).
+```
+
+This transient error likely occurred due to the concurrent deployment of the contracts.
+
+**Solution**:
+
+- Stop the command `docker compose` and restart it.
+
 ### Issue: Transactions Failing After Lab Restart
 Your local blockchain’s state is not permanently saved to disk. This means that each time you restart the lab (specifically, the Docker container running the blockchain), the blockchain is reset.
 
