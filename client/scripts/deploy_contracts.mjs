@@ -116,47 +116,42 @@ async function deployContracts(deployData) {
   await setStatProxy(from, props);
 
   // Sweep levels
-  const promises = gamedata.default.levels.map(async (level) => {
-    // console.log('level: ', level);
-    return new Promise(async (resolve) => {
-      if (needsDeploy(deployData[level.deployId])) {
-        console.log(
-          `Deploying ${level.levelContract}, deployId: ${level.deployId}...`
-        );
+  for (const level of gamedata.default.levels) {
+    if (needsDeploy(deployData[level.deployId])) {
+      console.log(
+        `Deploying ${level.levelContract}, deployId: ${level.deployId}...`
+      );
 
-        // Deploy contract
-        const LevelABI = JSON.parse(
-          fs.readFileSync(
-            `contracts/out/${
-              level.levelContract
-            }/${withoutExtension(level.levelContract)}.json`,
-            "utf-8"
-          )
-        );
-        const Contract = await ethutil.getTruffleContract(LevelABI, { from });
-        const contract = await Contract.new(...level.deployParams, props);
-        console.log(colors.yellow(`  ${level.name}: ${contract.address}`));
-        deployData[level.deployId] = contract.address;
-        console.log(
-          colors.gray(
-            `  storing deployed id: ${level.deployId} with address: ${contract.address}`
-          )
-        );
+      // Load contract ABI
+      const LevelABI = JSON.parse(
+        fs.readFileSync(
+          `contracts/out/${level.levelContract}/${withoutExtension(level.levelContract)}.json`,
+          "utf-8"
+        )
+      );
 
-        // Register level in Ethernaut contract
-        console.log(
-          `  Registering level ${level.levelContract} in Ethernaut.sol...`
-        );
-        const tx = await ethernaut.registerLevel(contract.address, props);
-        console.log(`Registered ${level.levelContract}!`);
-      } else {
-        console.log(`Using deployed ${level.levelContract}...`);
-      }
-      resolve(level);
-    });
-  });
+      // Get contract and deploy
+      const Contract = await ethutil.getTruffleContract(LevelABI, { from });
+      const contract = await Contract.new(...level.deployParams, props);
 
-  return Promise.all(promises);
+      console.log(colors.yellow(`  ${level.name}: ${contract.address}`));
+      deployData[level.deployId] = contract.address;
+
+      console.log(
+        colors.gray(
+          `  storing deployed id: ${level.deployId} with address: ${contract.address}`
+        )
+      );
+
+      // Register the level
+      console.log(`  Registering level ${level.levelContract} in Ethernaut.sol...`);
+      const tx = await ethernaut.registerLevel(contract.address, props);
+      console.log(`Registered ${level.levelContract}!`);
+
+    } else {
+      console.log(`Using deployed ${level.levelContract}...`);
+    }
+  }
 }
 
 // ----------------------------------
