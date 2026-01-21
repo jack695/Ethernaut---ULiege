@@ -129,6 +129,15 @@ Most game interaction is via the browser's console: `Dev Tools -> Console`. Open
 
 Some levels will require working outside of the browser console. That is, writing solidity code and deploying it in the network to attack the level's instance contract with another contract. This can be done in multiple ways, but we recommend using Remix to write the code and deploy it in the corresponding network See [Remix Solidity IDE](https://remix.ethereum.org/).
 
+- Start by writing your code in a file in the directory `contracts`.
+- On the left panel, click on "Deploy and run transactions".
+- Now, you should be able to set the environment to `Browser Extension > Injected Provider - MetaMask`.
+- Make sure that the selected account is the correct one. It should be `0xf39...`
+- Then, click on `Deploy & Verify` below to deploy your contract.
+- In the bottom left, you should see the list of deployed contracts. You can interact with them directly in Remix.
+
+![alt text](pictures/remix.png)
+
 ### Cheat Sheet
 
 A bunch of commands to help the folks which are unfamiliar with JavaScript.
