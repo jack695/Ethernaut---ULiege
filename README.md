@@ -76,11 +76,58 @@ In case the previous option didn't work, you can refer to this section to host t
     yarn start:ethernaut
     ```
 
+------
+------
+
 ## Play
 
-To start with this game, look at the instructions at [http://localhost:3000/help](http://localhost:3000/help).
+The game is hosted at [http://localhost:3000/](http://localhost:3000/).
 
-Then, you can start with the first level at [http://localhost:3000/](http://localhost:3000/).
+### Setup MetaMask
+
+If you don't have it already, install the [MetaMask browser extension](https://metamask.io/) (in Chrome, Firefox, Brave or Opera on your desktop machine).
+
+Set up the extension's wallet and use the network selector to add a custom network.
+
+Configure the network as follows:
+1. Set the RPC URL to `http://localhost:8545`.
+2. Set the Chain ID to `31337`.
+3. Set the Currency symbol to `GO`.
+
+
+Once done, make sure to select this network, come back here and reload the webpage.
+
+Now the webapp is configured to use the local blockchain which is running on your device.
+
+This local blockchain is configured with multiple wallets containing sufficient ETH to run the lab.
+
+Follow the steps of described [here](https://support.metamask.io/fr/managing-my-wallet/accounts-and-addresses/how-to-import-an-account/#:~:text=From%20the%20wallet%20view%2C%20tap,supported%20by%20the%20other%20wallet.) to import the private key `ac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80`.
+
+**Note**: this private key is a well-known private key used for testing. **Do not use it on a real network**.
+
+### Game Mechanics
+
+The game uses the main contract `Ethernaut.sol` to manage player progress and delegate interaction with `Level.sol` implementations. Each level contract emits instances for players to manipulate, break, destroy, fix, etc. The player requests an instance, manipulates it and returns it to the game for evaluation of level completion.
+
+Both requesting instances and submitting instances back to the game are done with the buttons in the user interface in each level. When this app retrieves an instance from `Ethernaut.sol`, it wraps it in a `TruffleContract` object and exposes it in the browser's console. See the first level for a full tutorial on how to play the game.
+
+### Using the console
+
+Most game interaction is via the browser's console: `Dev Tools -> Console`. Open the console and enter the command:
+
+`help()`
+
+ to see a list of objects and functions injected by the game to the console. Since most interactions are asynchronous, we recommend using Chrome v62 which enables the `async/await` keywords in the console, so instead of writting:
+
+`getBalance(player)> PROMISE`
+
+ and opening the promise. With await/async, you can write:
+
+`await getBalance(player) > '1.11002387' `
+
+### Beyond the console
+
+Some levels will require working outside of the browser console. That is, writing solidity code and deploying it in the network to attack the level's instance contract with another contract. This can be done in multiple ways, but we recommend using Remix to write the code and deploy it in the corresponding network See [Remix Solidity IDE](https://remix.ethereum.org/).
 
 ### Cheat Sheet
 
