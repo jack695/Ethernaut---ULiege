@@ -140,6 +140,10 @@ A bunch of commands to help the folks which are unfamiliar with JavaScript.
 | await sendTransaction({from: player, to: contract.address, value: toWei("0.1"), gas: 100000}) | Send a transaction from the player address to the contract with 0.1 ether and a gas limit of 100000.         |
 | web3.eth.abi.encodeFunctionSignature("someFunction")| Compute the function selector of 'someFunction'         |
 
+### Useful resources
+
+[Solidity documentation](https://docs.soliditylang.org/en/v0.8.0/): adapt the version to the one of the smart contract.
+
 ## Troubleshooting
 ### Issue: Contracts Deployment Failing
 
