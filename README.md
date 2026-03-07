@@ -19,14 +19,14 @@ First clone this repository and its submodules with
 #### Linux/MacOS
 
 ```bash
-git clone --recurse-submodules https://gitlab.uliege.be/blockchains/ethereum/ctf-games/ethernaut/ethernaut.git
+git clone --recurse-submodules https://github.com/jack695/Ethernaut---ULiege.git
 ```
 
 
 #### Windows
 
 ```bash
-git clone -b vj-docker-compose-support-for-windows --recurse-submodules https://gitlab.uliege.be/blockchains/ethereum/ctf-games/ethernaut/ethernaut.git
+git clone -b vj-docker-compose-support-for-windows --recurse-submodules https://github.com/jack695/Ethernaut---ULiege.git
 ```
 
 ### Option 1: With Docker Compose
