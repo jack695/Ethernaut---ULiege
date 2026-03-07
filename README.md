@@ -95,7 +95,9 @@ Configure the network as follows:
 3. Set the Currency symbol to `GO`.
 
 
-Once done, make sure to select this network, come back here and reload the webpage.
+Once done, make sure to select this network (there should be an icon on the upper right side), come back here and reload the webpage.
+
+![alt text](pictures/network.png)
 
 Now the webapp is configured to use the local blockchain which is running on your device.
 
