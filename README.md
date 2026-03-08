@@ -19,14 +19,14 @@ First clone this repository and its submodules with
 #### Linux/MacOS
 
 ```bash
-git clone --recurse-submodules https://gitlab.uliege.be/blockchains/ethereum/ctf-games/ethernaut/ethernaut.git
+git clone --recurse-submodules https://github.com/jack695/Ethernaut---ULiege.git
 ```
 
 
 #### Windows
 
 ```bash
-git clone -b vj-docker-compose-support-for-windows --recurse-submodules https://gitlab.uliege.be/blockchains/ethereum/ctf-games/ethernaut/ethernaut.git
+git clone -b vj-docker-compose-support-for-windows --recurse-submodules https://github.com/jack695/Ethernaut---ULiege.git
 ```
 
 ### Option 1: With Docker Compose
@@ -95,7 +95,9 @@ Configure the network as follows:
 3. Set the Currency symbol to `GO`.
 
 
-Once done, make sure to select this network, come back here and reload the webpage.
+Once done, make sure to select this network (there should be an icon on the upper right side), come back here and reload the webpage.
+
+![alt text](pictures/network.png)
 
 Now the webapp is configured to use the local blockchain which is running on your device.
 
